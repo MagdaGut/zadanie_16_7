@@ -2,6 +2,7 @@ import React from 'react';
 import style from './App.css';
 import Title from '../components/Title';
 import TodoList from '../components/TodoList';
+import TodoForm from '../components/TodoForm';
 import {hot} from 'react-hot-loader';
 
 class App extends React.Component {
@@ -30,7 +31,7 @@ class App extends React.Component {
     addTodo(val){
         const todo = {
             text: val,
-            id: uuid.v4(),
+            id: Math.random(),
         };
         const data = [...this.state.data, todo];
         this.setState({data});
@@ -46,6 +47,7 @@ class App extends React.Component {
             <div className={style.TodoApp}>
                 <Title title="Lista rzeczy do zrobienia" />
                 <TodoList data={this.state.data} remove={this.removeTodo}/>
+                <TodoForm add={this.addTodo}/>
             </div>
         );
     }
